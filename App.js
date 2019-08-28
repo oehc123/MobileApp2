@@ -4,7 +4,8 @@ import { StyleSheet, Text, View } from 'react-native';
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text style={styles.banner}>FoodWize App in comming</Text>
+      <Text style={styles.banner}>FoodWize App</Text>
+      <Text style={styles.message}>In comming...</Text>
     </View>
   );
 }
@@ -20,5 +21,8 @@ const styles = StyleSheet.create({
     color: '#dbf4a9',
     fontSize: 24,
     fontWeight: "bold"
+  },
+  message:{
+    color: '#dbf4a9',
   },
 });
