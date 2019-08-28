@@ -2,16 +2,23 @@
   "expo": {
     "name": "Foodwize",
     "slug": "Foodwize",
-    "privacy": "public",
+    "icon": "./assets/icon.png",
+    "version": "1.0.0",
     "sdkVersion": "34.0.0",
+    "ios": {
+      "bundleIdentifier": "com.foodwize.refrigeratorPassApp",
+      "supportsTablet": true
+    },
+    "android": {
+      "package": "com.foodwize.refrigeratorPassApp"
+    },
     "platforms": [
       "ios",
       "android",
       "web"
     ],
-    "version": "1.0.0",
+    "privacy": "public",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
@@ -22,9 +29,6 @@
     },
     "assetBundlePatterns": [
       "**/*"
-    ],
-    "ios": {
-      "supportsTablet": true
-    }
+    ]
   }
 }

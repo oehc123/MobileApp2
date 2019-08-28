@@ -4,7 +4,7 @@ import { StyleSheet, Text, View } from 'react-native';
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Welcome to FoodwizeApp in ReactNative</Text>
+      <Text style={styles.banner}>FoodWize App in comming</Text>
     </View>
   );
 }
@@ -12,8 +12,13 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#7dbf5c',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  banner:{
+    color: '#dbf4a9',
+    fontSize: 24,
+    fontWeight: "bold"
   },
 });
