@@ -5,7 +5,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Text style={styles.banner}>FoodWize App</Text>
-      <Text style={styles.message}>In comming...</Text>
+      <Text style={styles.message}>In coming...</Text>
     </View>
   );
 }
