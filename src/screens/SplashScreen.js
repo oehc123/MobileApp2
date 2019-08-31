@@ -9,7 +9,7 @@ export default class SplashScreen extends Component {
     render() {
         return (
         <View style={styles.container}>
-            <Text style={styles.banner}>FoodWize App</Text>
+            <Text style={styles.banner}>Foodwize App</Text>
             <Text style={styles.message}>In coming...</Text>
             <Button style={{ marginTop: 20 }}
                 title='explore App'
