@@ -1,28 +1,14 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { createAppContainer } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
+import SplashScreen from './src/screens/SplashScreen';
+import MainScreen from './src/screens/MainScreen';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text style={styles.banner}>FoodWize App</Text>
-      <Text style={styles.message}>In coming...</Text>
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#7dbf5c',
-    alignItems: 'center',
-    justifyContent: 'center',
+const AppNavigator = createStackNavigator({
+    Splash: SplashScreen,
+    MainScreen: MainScreen
   },
-  banner:{
-    color: '#dbf4a9',
-    fontSize: 24,
-    fontWeight: "bold"
-  },
-  message:{
-    color: '#dbf4a9',
-  },
+  {
+    initialRouteName: 'Splash',
 });
+
+export default createAppContainer(AppNavigator);
