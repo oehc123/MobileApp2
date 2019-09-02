@@ -1,11 +1,14 @@
 import * as React from 'react';
 import { Text, View, StyleSheet, Button } from 'react-native';
-import Constants from 'expo-constants';
 import * as Permissions from 'expo-permissions';
 
 import { BarCodeScanner } from 'expo-barcode-scanner';
 
 export default class BarcodeScreen extends React.Component {
+  static navigationOptions = {
+    header: null
+  };
+
   state = {
     hasCameraPermission: null,
     scanned: false,
@@ -33,8 +36,8 @@ export default class BarcodeScreen extends React.Component {
       <View
         style={{
           flex: 1,
-          flexDirection: 'column',
-          justifyContent: 'flex-end',
+          alignItems: 'center',
+          justifyContent: 'center'
         }}>
         <BarCodeScanner
           onBarCodeScanned={scanned ? undefined : this.handleBarCodeScanned}
