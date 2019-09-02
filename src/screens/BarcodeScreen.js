@@ -1,6 +1,7 @@
-import * as React from 'react';
-import { Text, View, StyleSheet, Button } from 'react-native';
-import * as Permissions from 'expo-permissions';
+import * as React from "react";
+import { Fragment } from "react";
+import { Text, View, StyleSheet, Button, Linking } from "react-native";
+import * as Permissions from "expo-permissions";
 
 import { BarCodeScanner } from 'expo-barcode-scanner';
 
@@ -11,7 +12,7 @@ export default class BarcodeScreen extends React.Component {
 
   state = {
     hasCameraPermission: null,
-    scanned: false,
+    scanned: false
   };
 
   async componentDidMount() {
@@ -33,21 +34,33 @@ export default class BarcodeScreen extends React.Component {
       return <Text>No access to camera</Text>;
     }
     return (
-      <View
-        style={{
-          flex: 1,
-          alignItems: 'center',
-          justifyContent: 'center'
-        }}>
-        <BarCodeScanner
-          onBarCodeScanned={scanned ? undefined : this.handleBarCodeScanned}
-          style={StyleSheet.absoluteFillObject}
-        />
-
-        {scanned && (
-          <Button title={'Tap to Scan Again'} onPress={() => this.setState({ scanned: false })} />
-        )}
-      </View>
+      <Fragment>
+        <View
+          style={{
+            flex: 1
+          }}
+        >
+          <BarCodeScanner
+            onBarCodeScanned={scanned ? undefined : this.handleBarCodeScanned}
+            style={StyleSheet.absoluteFillObject}
+          />
+          {scanned && (
+            <Button
+              title={"Tap to Scan Again"}
+              onPress={() => this.setState({ scanned: false })}
+            />
+          )}
+        </View>
+        <View style={styles.instructionTextStyle}>
+          <View style={{ backgroundColor: "grey", opacity: 0.7 }}>
+            <Text style={{ fontSize: 20 }}> Scan Barcode to Open Fridge </Text>
+            <Text style={{ textAlign: 'center', color: 'blue'}}
+              onPress={() => Linking.openURL('http://foodwize.co')}>
+              Need Help
+            </Text>
+          </View>
+        </View>
+      </Fragment>
     );
   }
 
@@ -56,3 +69,15 @@ export default class BarcodeScreen extends React.Component {
     alert(`Bar code with type ${type} and data ${data} has been scanned!`);
   };
 }
+
+const styles = StyleSheet.create({
+  instructionTextStyle: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 100,
+    justifyContent: "flex-end",
+    alignItems: "center"
+  }
+});
