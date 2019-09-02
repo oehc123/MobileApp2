@@ -18,6 +18,7 @@ export default class MainScreen extends Component {
 					type='outline'
 					containerStyle={{marginTop: 40, alignItems: 'center'}}
 					buttonStyle={styles.OpenFridgeBtn}
+					onPress={ ()=> this.props.navigation.navigate('BarcodeScreen')}
 				/>
 
 			</View>

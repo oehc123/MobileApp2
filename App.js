@@ -3,9 +3,11 @@ import { Text, View, StyleSheet } from 'react-native';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import MainScreen from './src/screens/MainScreen';
+import BarcodeScreen from './src/screens/BarcodeScreen';
 
 const AppNavigator = createStackNavigator({
-    MainScreen: MainScreen
+    MainScreen: MainScreen,
+    BarcodeScreen: BarcodeScreen
   },
   {
     initialRouteName: 'MainScreen',
