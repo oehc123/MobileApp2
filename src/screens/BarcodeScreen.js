@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Fragment } from "react";
-import { Text, View, StyleSheet, Button, Linking } from "react-native";
+import { Text, View, StyleSheet, Button, Linking, Image } from "react-native";
 import * as Permissions from "expo-permissions";
 
 import { BarCodeScanner } from 'expo-barcode-scanner';
@@ -53,12 +53,18 @@ export default class BarcodeScreen extends React.Component {
         </View>
         <View style={styles.instructionTextStyle}>
           <View style={{ backgroundColor: "grey", opacity: 0.7 }}>
-            <Text style={{ fontSize: 20 }}> Scan Barcode to Open Fridge </Text>
-            <Text style={{ textAlign: 'center', color: 'blue'}}
+            <Text style={{ fontSize: 20 }}> Scan fridge's barcode to Open </Text>
+            <Text style={{ textAlign: 'center', color: 'blue', fontWeight: 'bold'}}
               onPress={() => Linking.openURL('http://foodwize.co')}>
-              Need Help
+              Need Help?
             </Text>
           </View>
+        </View>
+        <View style={styles.qrRefStyle}>
+        <Image
+          source={require('../../assets/images/qrReference.png')}
+          style={{opacity: 0.5}}
+        />
         </View>
       </Fragment>
     );
@@ -78,6 +84,15 @@ const styles = StyleSheet.create({
     right: 0,
     bottom: 100,
     justifyContent: "flex-end",
+    alignItems: "center"
+  },
+  qrRefStyle: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 100,
+    justifyContent: "center",
     alignItems: "center"
   }
 });
