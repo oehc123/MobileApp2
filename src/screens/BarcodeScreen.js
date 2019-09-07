@@ -4,6 +4,7 @@ import { Text, View, StyleSheet, Button, Linking, Image } from "react-native";
 import * as Permissions from "expo-permissions";
 
 import { BarCodeScanner } from 'expo-barcode-scanner';
+import { TouchableHighlight } from "react-native-gesture-handler";
 
 export default class BarcodeScreen extends React.Component {
   static navigationOptions = {
@@ -61,10 +62,17 @@ export default class BarcodeScreen extends React.Component {
           </View>
         </View>
         <View style={styles.qrRefStyle}>
-        <Image
-          source={require('../../assets/images/qrReference.png')}
-          style={{opacity: 0.5}}
-        />
+          <TouchableHighlight       //TODO going to a generic HeadsUpScreen
+            onPress={ () => {
+              console.log('jose barcode pressed')
+              this.props.navigation.navigate('HeadsUpScreen')
+            }}
+          >
+          <Image
+            source={require('../../assets/images/qrReference.png')}
+            style={{opacity: 0.5}}
+          />
+        </TouchableHighlight>
         </View>
       </Fragment>
     );
@@ -73,6 +81,7 @@ export default class BarcodeScreen extends React.Component {
   handleBarCodeScanned = ({ type, data }) => {
     this.setState({ scanned: true });
     alert(`Bar code with type ${type} and data ${data} has been scanned!`);
+    this.props.navigation.navigate('HeadsUpScreen')  //TODO going to a generic HeadsUpScreen
   };
 }
 

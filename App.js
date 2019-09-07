@@ -4,10 +4,12 @@ import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import MainScreen from './src/screens/MainScreen';
 import BarcodeScreen from './src/screens/BarcodeScreen';
+import HeadsUpScreen from './src/screens/HeadsUpScreen';
 
 const AppNavigator = createStackNavigator({
     MainScreen: MainScreen,
-    BarcodeScreen: BarcodeScreen
+    BarcodeScreen: BarcodeScreen,
+    HeadsUpScreen: HeadsUpScreen
   },
   {
     initialRouteName: 'MainScreen',
