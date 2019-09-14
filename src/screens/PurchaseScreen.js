@@ -28,7 +28,7 @@ export default class PurchaseScreen extends React.Component {
 
   render() {
     return (
-      <View style={{ flex: 1 }}>
+      <View style={{ flex: 1, backgroundColor: 'white' }}>
         <View style={{ flex: 3, alignSelf: 'center', justifyContent: 'center' }}>
           <Image source={require('../../assets/images/PurchaseScreenTomatoe.png')} />
           <Text style={{ fontSize: 40, alignSelf: 'center', fontWeight: 'bold'}}>EAT HAPPY</Text>

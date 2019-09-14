@@ -13,7 +13,7 @@ export default class HeadsUpScreen extends Component {
   };
   render() {
     return (
-      <View style={{ flex: 1 }}>
+      <View style={{ flex: 1, backgroundColor: 'white' }}>
         <TouchableHighlight       //TODO going to a generic HeadsUpScreen
           onPress={() => this.props.navigation.navigate('PurchaseScreen')}
         >
