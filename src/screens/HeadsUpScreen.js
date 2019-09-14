@@ -3,7 +3,8 @@ import {
   View,
   Text,
   Image,
-  StyleSheet
+  StyleSheet,
+  TouchableHighlight
 } from "react-native";
 
 export default class HeadsUpScreen extends Component {
@@ -13,10 +14,14 @@ export default class HeadsUpScreen extends Component {
   render() {
     return (
       <View style={{ flex: 1 }}>
-        <Image
-          style={styles.imageFridgeStyle}
-          source={require('../../assets/images/FridgeImageWireframe.png')} //TODO implement correct fridge image//https://trello.com/c/QQ2ESYwY/94-dev-heads-up-display
-        />
+        <TouchableHighlight       //TODO going to a generic HeadsUpScreen
+          onPress={() => this.props.navigation.navigate('PurchaseScreen')}
+        >
+          <Image
+            style={styles.imageFridgeStyle}
+            source={require('../../assets/images/FridgeImageWireframe.png')} //TODO implement correct fridge image//https://trello.com/c/QQ2ESYwY/94-dev-heads-up-display
+          />
+        </TouchableHighlight>
         <View style={{ marginTop: 40 }}>
           <Text style={styles.textFridgeStyle}>
             Fridge_title

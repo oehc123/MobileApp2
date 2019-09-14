@@ -1,15 +1,17 @@
 import React from 'react'
 import { Text, View, StyleSheet } from 'react-native';
-import { createAppContainer } from 'react-navigation';
-import { createStackNavigator } from 'react-navigation-stack';
+import { createAppContainer, createStackNavigator } from 'react-navigation';
 import MainScreen from './src/screens/MainScreen';
 import BarcodeScreen from './src/screens/BarcodeScreen';
 import HeadsUpScreen from './src/screens/HeadsUpScreen';
+import PurchaseScreen from './src/screens/PurchaseScreen';
+import { Ionicons } from '@expo/vector-icons';
 
 const AppNavigator = createStackNavigator({
     MainScreen: MainScreen,
     BarcodeScreen: BarcodeScreen,
-    HeadsUpScreen: HeadsUpScreen
+    HeadsUpScreen: HeadsUpScreen,
+    PurchaseScreen: PurchaseScreen,
   },
   {
     initialRouteName: 'MainScreen',
