@@ -5,7 +5,6 @@ import MainScreen from './src/screens/MainScreen';
 import BarcodeScreen from './src/screens/BarcodeScreen';
 import HeadsUpScreen from './src/screens/HeadsUpScreen';
 import PurchaseScreen from './src/screens/PurchaseScreen';
-import { Ionicons } from '@expo/vector-icons';
 
 const AppNavigator = createStackNavigator({
     MainScreen: MainScreen,
