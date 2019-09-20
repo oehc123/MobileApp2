@@ -9,7 +9,7 @@ import {
   Image
 } from "react-native";
 import * as Permissions from "expo-permissions";
-import { Ionicons } from "@expo/vector-icons";
+import { AntDesign } from "@expo/vector-icons";
 
 import { BarCodeScanner } from "expo-barcode-scanner";
 import { TouchableHighlight } from "react-native-gesture-handler";
@@ -61,9 +61,9 @@ export default class BarcodeScreen extends React.Component {
               />
         </TouchableHighlight>
         </View>
-        <View style={{ position: "absolute", right: 10, top: 20 }}>
-            <Ionicons
-              name="md-close-circle"
+        <View style={{ position: "absolute", left: 10, top: 20 }}>
+            <AntDesign
+              name="leftcircle"
               size={40}
               color='black'
               onPress={() => {
