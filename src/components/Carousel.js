@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { View, Text, ScrollView, StyleSheet, Dimensions } from 'react-native';
+import { View, ScrollView, StyleSheet, Dimensions } from 'react-native';
 
 const { width } = Dimensions.get('window');
 
