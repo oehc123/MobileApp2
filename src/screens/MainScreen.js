@@ -5,7 +5,7 @@ import { Header, Button, Image, Text, ScrollView } from 'react-native-elements'
 import { Carousel } from '../components/Carousel';
 
 const { width } = Dimensions.get('window');
-const height = width * 0.5
+const featureMealCarouselImageHeight = width * 0.5
 
 export default class MainScreen extends Component {
   
@@ -69,6 +69,6 @@ const styles = StyleSheet.create({
   },
   mealImage: {
     width: width,
-    height,
+    height: featureMealCarouselImageHeight,
   },
 });

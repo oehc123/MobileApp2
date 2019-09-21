@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 
-import { View, Text, ScrollView, StyleSheet, Dimensions } from 'react-native';
+import { View, ScrollView, StyleSheet, Dimensions } from 'react-native';
 
 const { width } = Dimensions.get('window');
-//const height = width * 0.8;
 
 export class Carousel extends Component {
 
@@ -18,10 +17,6 @@ export class Carousel extends Component {
       countPages: Math.round((widthView / width) * array.length),
       items: array,
     };
-  }
-
-  componentDidMount() {
-    
   }
 
   componentView = () => {
@@ -72,7 +67,7 @@ export class Carousel extends Component {
 
   render() {
     if (this.state) {
-      if (!this.widthView)
+      if (!this.widthView || this.widthView == 0)
         console.log('Please provide child width view');  
       else if (!(this.state.items && this.state.items.length))
         console.log('Please provide data array.');
@@ -87,15 +82,14 @@ const styles = StyleSheet.create({
   scrollContainer: {
     marginTop: 3,
     marginBottom: 3,
-    //height,
-  },/**/
+  },
   pageViewsContainer: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
     flexDirection: 'row',
     position: 'absolute',
-    width,
+    width: width,
     bottom: 6,
   },
   activePageView: {
@@ -103,7 +97,7 @@ const styles = StyleSheet.create({
     opacity: 1,
     height: 10,
     width: 10,
-    borderRadius: 5, // width / 2
+    borderRadius: 5,
     marginTop: 3,
     marginLeft: 0,
     marginBottom: 0,
@@ -114,7 +108,7 @@ const styles = StyleSheet.create({
     opacity: 0.6,
     height: 10,
     width: 10,
-    borderRadius: 5, // width / 2
+    borderRadius: 5,
     marginTop: 3,
     marginLeft: 0,
     marginBottom: 0,
