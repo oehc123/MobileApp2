@@ -8,14 +8,16 @@ export class Carousel extends Component {
 
   constructor(props) {
     super(props);
-    const { array, widthView, renderView } = this.props;
+    const { array, widthView, renderView, showPageViews } = this.props;
+    
     this.renderView = renderView;
-
+    this.showPageViews = showPageViews != null ? showPageViews : true;
     this.widthView = widthView;
+    
     this.state = { 
       currentPage: 0,
       countPages: Math.round((widthView / width) * array.length),
-      items: array,
+      items: array
     };
   }
 
@@ -32,16 +34,14 @@ export class Carousel extends Component {
           onMomentumScrollEnd={ this.onMomentumScrollEndDo }
           showsHorizontalScrollIndicator={false}
         >
-          { this.state.items.map((item, index) => this.contentPage(item, index) )}
+          { this.state.items.map((item, index) => this.buildContentPage(item, index) )}
         </ScrollView>
-        <View style={styles.pageViewsContainer}>
-          { this.pageViews() }
-        </View>
+        { this.showPageViews && this.buildPageViews()}
       </View>
     );
   }
 
-  contentPage = (item, index) => {
+  buildContentPage = (item, index) => {
     const { renderView } = this.props;
     content = renderView(item, index);
     return <View key={index} style={{width: this.widthView}}>
@@ -49,7 +49,7 @@ export class Carousel extends Component {
     </View>;
   }
 
-  pageViews = () => {
+  buildPageViews = () => {
     var pageViews = [];
 
     for(let i = 0; i < this.state.countPages; i++){
@@ -57,7 +57,12 @@ export class Carousel extends Component {
         <View key={i} style={ this.state.currentPage == i ? styles.activePageView : styles.pageView }></View>
       ))
     }
-    return pageViews;
+    
+    return (
+      <View style={styles.pageViewsContainer}>
+          { pageViews }
+      </View>
+    );
   }
 
   onMomentumScrollEndDo = (event) => {
