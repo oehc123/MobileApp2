@@ -8,20 +8,9 @@ import { Ionicons } from '@expo/vector-icons';
 import { Button } from 'react-native-elements'
 
 export default class PurchaseScreen extends React.Component {
-  static navigationOptions = ({ navigation }) => {
+  static navigationOptions = () => {
     return {
-      headerStyle: { borderBottomWidth: 0, height: 60 },
-      headerLeft: (
-        <Ionicons name='md-refresh-circle'
-          size={50}
-          rotate={30}
-          color='black'
-          style={{ marginLeft: 10, transform: [{scaleX: -1,}] }}
-          onPress={() => {
-            navigation.navigate('BarcodeScreen');
-          }}
-        />
-      ),
+      header: null
     };
   };
 
@@ -29,6 +18,17 @@ export default class PurchaseScreen extends React.Component {
   render() {
     return (
       <View style={{ flex: 1, backgroundColor: 'white' }}>
+        <View style={{ flex: 1, justifyContent: 'center', alignSelf: 'flex-start'}}>
+          <Ionicons name='md-refresh-circle'
+            size={50}
+            rotate={30}
+            color='black'
+            style={{ marginLeft: 10, transform: [{scaleX: -1,}] }}
+            onPress={() => {
+              this.props.navigation.navigate('BarcodeScreen');
+            }}
+          />
+        </View>
         <View style={{ flex: 3, alignSelf: 'center', justifyContent: 'center' }}>
           <Image source={require('../../assets/images/PurchaseScreenTomatoe.png')} />
           <Text style={{ fontSize: 40, alignSelf: 'center', fontWeight: 'bold'}}>EAT HAPPY</Text>
