@@ -46,7 +46,7 @@ export default class PurchaseScreen extends React.Component {
 				/>
         </View>
         <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-          <Text style={{ fontSize: 25 }}>Thank you for using Foodwizw</Text>
+          <Text style={{ fontSize: 25 }}>Thank you for using Foodwize</Text>
           <Text style={{ fontSize: 20, fontWeight: 'bold'}}
             onPress={() => console.log('jose TODO send Feedback pressed')}>
               Send Feedback
