@@ -5,14 +5,16 @@ import {
   View,
   StyleSheet,
   Linking,
+  Dimensions,
   Image
 } from "react-native";
 import * as Permissions from "expo-permissions";
-import { Ionicons } from "@expo/vector-icons";
+import { AntDesign } from "@expo/vector-icons";
 
 import { BarCodeScanner } from "expo-barcode-scanner";
 import { TouchableHighlight } from "react-native-gesture-handler";
 
+let {width, height} = Dimensions.get('window');
 export default class BarcodeScreen extends React.Component {
   static navigationOptions = {
     header: null
@@ -43,25 +45,33 @@ export default class BarcodeScreen extends React.Component {
     }
     return (
       <Fragment>
-        <View
-          style={{ flex: 1 }}
-        >
-          <BarCodeScanner
+        <BarCodeScanner
             onBarCodeScanned={scanned ? undefined : this.handleBarCodeScanned}
             style={StyleSheet.absoluteFillObject}
-          />
-          <View style={styles.overlayStyle} />
-          <View style={{ position: "absolute", right: 10, top: 20 }}>
-            <Ionicons
-              name="md-close-circle"
+        />
+        <View style={styles.camaraHoleStyle}>
+        <TouchableHighlight //TODO this should be deleted. its added only for testing purposes
+              onPress={() => {
+                this.props.navigation.navigate("HeadsUpScreen");
+              }}
+          >
+          <Image
+                source={require("../../assets/images/qrReference.png")}
+                style={{ opacity: 0.5,  }}
+              />
+        </TouchableHighlight>
+        </View>
+        <View style={{ position: "absolute", left: 10, top: 20 }}>
+            <AntDesign
+              name="leftcircle"
               size={40}
               color='black'
               onPress={() => {
                 this.props.navigation.goBack();
               }}
             />
-          </View>
-          <View style={styles.instructionTextStyle}>
+        </View>
+        <View style={styles.instructionTextStyle}>
             <View style={{ backgroundColor: "grey", opacity: 0.7 }}>
               <Text style={{ fontSize: 20 }}>
                 Scan fridge's barcode to Open
@@ -77,20 +87,6 @@ export default class BarcodeScreen extends React.Component {
                 Need Help?
               </Text>
             </View>
-          </View>
-          <View style={styles.qrRefStyle}>
-            <TouchableHighlight //TODO going to a generic HeadsUpScreen
-              onPress={() => {
-                console.log("jose barcode pressed");
-                this.props.navigation.navigate("HeadsUpScreen");
-              }}
-            >
-              <Image
-                source={require("../../assets/images/qrReference.png")}
-                style={{ opacity: 0.5 }}
-              />
-            </TouchableHighlight>
-          </View>
         </View>
       </Fragment>
     );
@@ -122,11 +118,17 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center"
   },
-  overlayStyle: {
-    height: '100%',
-    width: '100%',
-    position: "absolute",
-    opacity: 0.2,
-    backgroundColor: "black"
+  camaraHoleStyle: {
+    position: 'absolute',
+    height: height,
+    width: width,
+    borderRightWidth: width/9,
+    borderTopWidth: height/8,
+    borderBottomWidth: height/2,
+    borderLeftWidth: width/9,
+    borderColor:'rgba(0,0,0,0.6)',
+    backgroundColor: 'transparent',
+    justifyContent: 'center',
+    alignItems: 'center'
   }
 });

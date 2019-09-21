@@ -8,6 +8,7 @@ const { width } = Dimensions.get('window');
 const height = width * 0.5
 
 export default class MainScreen extends Component {
+  
   static navigationOptions = {
     header: null
   };

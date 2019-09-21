@@ -15,7 +15,7 @@ const AppNavigator = createStackNavigator({
   {
     initialRouteName: 'MainScreen',
 });
-
+                        
 const AppContainer = createAppContainer(AppNavigator);
 
 export default class App extends React.Component {
