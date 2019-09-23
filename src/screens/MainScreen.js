@@ -22,7 +22,7 @@ export default class MainScreen extends Component {
 		return (
 			<View>
 				<Image style={styles.SignatureMealImage} source={item.source} />
-				<Text style={styles.SignatureMealTitle}>{item.title}</Text>
+				<Text style={styles.SignatureMealTitle}>{item.title +' '+ index}</Text>
 			</View>
 		)
 	}
@@ -42,43 +42,43 @@ export default class MainScreen extends Component {
 		];
 		const signatureMeals = [
 			{
-				title: 'Sample',
+				title: 'Meal',
 				source: require('../../assets/images/signature.sample.png'),
 			},
 			{
-				title: 'Sample',
+				title: 'Meal',
 				source: require('../../assets/images/signature.sample.png'),
 			},
 			{
-				title: 'Sample',
+				title: 'Meal',
 				source: require('../../assets/images/signature.sample.png'),
 			},
 			{
-				title: 'Sample',
+				title: 'Meal',
 				source: require('../../assets/images/signature.sample.png'),
 			},
 			{
-				title: 'Sample',
+				title: 'Meal',
 				source: require('../../assets/images/signature.sample.png'),
 			},
 			{
-				title: 'Sample',
+				title: 'Meal',
 				source: require('../../assets/images/signature.sample.png'),
 			},
 			{
-				title: 'Sample',
+				title: 'Meal',
 				source: require('../../assets/images/signature.sample.png'),
 			},
 			{
-				title: 'Sample',
+				title: 'Meal',
 				source: require('../../assets/images/signature.sample.png'),
 			},
 			{
-				title: 'Sample',
+				title: 'Meal',
 				source: require('../../assets/images/signature.sample.png'),
 			},
 			{
-				title: 'Sample',
+				title: 'Meal',
 				source: require('../../assets/images/signature.sample.png'),
 			},
 		];
@@ -102,6 +102,7 @@ export default class MainScreen extends Component {
 							widthView={width}
 							renderView={this.featuresMeals}
 						/>
+						<Text style={styles.SignatureTitle}>Signature meals</Text>
 						<Carousel
 							style={styles.Carousel}
 							array={signatureMeals}
@@ -135,6 +136,11 @@ const styles = StyleSheet.create({
 	featureMealImage: {
 		width: width,
 		height: featureMealCarouselImageHeight,
+	},
+	SignatureTitle:{
+		marginTop: 8,
+		marginLeft: 16,
+		fontSize: 24,
 	},
 	SignatureMealImage: {
 		width: signatureMealCarouselImageAspectRatio,
