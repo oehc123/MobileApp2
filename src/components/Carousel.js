@@ -8,12 +8,13 @@ export class Carousel extends Component {
 
   constructor(props) {
     super(props);
-    const { array, widthView, renderView, showPageViews } = this.props;
+    const { array, widthView, renderView, showPageViews, pagingEnabled } = this.props;
     
     this.renderView = renderView;
     this.showPageViews = showPageViews != null ? showPageViews : true;
+    this.pagingEnabled = pagingEnabled != null ? pagingEnabled : true;
     this.widthView = widthView;
-    
+
     this.state = { 
       currentPage: 0,
       countPages: Math.round((widthView / width) * array.length),
@@ -29,7 +30,7 @@ export class Carousel extends Component {
         <ScrollView
           ref={(ref) => this.scrollView = ref } 
           horizontal
-          pagingEnabled={true}
+          pagingEnabled={this.pagingEnabled}
           scrollEventThrottle={16}
           onMomentumScrollEnd={ this.onMomentumScrollEndDo }
           showsHorizontalScrollIndicator={false}
@@ -67,7 +68,7 @@ export class Carousel extends Component {
 
   onMomentumScrollEndDo = (event) => {
     var positionX = event.nativeEvent.contentOffset.x;
-    this.setState({ currentPage: Math.trunc(positionX/width) })
+    this.setState({ currentPage: Math.round(positionX/width) })
   }
 
   render() {
