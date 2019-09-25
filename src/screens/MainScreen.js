@@ -108,6 +108,7 @@ export default class MainScreen extends Component {
 							array={signatureMeals}
 							widthView={signatureMealCarouselImageAspectRatio}
 							showPageViews={false}
+							pagingEnabled={false}
 							renderView={this.signatureMeals}
 						/>
 					</View>
