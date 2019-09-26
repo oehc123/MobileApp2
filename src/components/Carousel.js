@@ -13,18 +13,20 @@ export class Carousel extends Component {
     this.showPageViews = props.showPageViews == null ? true : props.showPageViews;
     this.pagingEnabled = props.pagingEnabled == null ? true : props.pagingEnabled;
     this.widthView = props.widthView;
-
+    
     this.state = { 
       currentPage: 0,
       countPages: Math.round((props.widthView / width) * props.array.length),
       items: props.array
     };
+
+    this.style = this.buildStyles()
   }
 
   componentView = () => {
     return (  
       <View
-        style={styles.scrollContainer}
+        style={this.style.ScrollContainer}
       >
         <ScrollView
           ref={(ref) => this.scrollView = ref } 
@@ -44,7 +46,7 @@ export class Carousel extends Component {
   buildContentPage = (item, index) => {
     const { renderView } = this.props;
     content = renderView(item, index);
-    return <View key={index} style={{width: this.widthView}}>
+    return <View key={index} style={this.style.PageContentView}>
       { content }
     </View>;
   }
@@ -54,15 +56,60 @@ export class Carousel extends Component {
 
     for(let i = 0; i < this.state.countPages; i++){
       pageViews.push((
-        <View key={i} style={ this.state.currentPage == i ? styles.activePageView : styles.pageView }></View>
+        <View key={i} style={ this.state.currentPage == i ? this.style.ActivePageView : this.style.PageView }></View>
       ))
     }
     
     return (
-      <View style={styles.pageViewsContainer}>
+      <View style={this.style.PageViewsContainer}>
           { pageViews }
       </View>
     );
+  }
+
+  buildStyles(){
+    return  StyleSheet.create({
+      PageContentView: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: this.widthView,
+      },
+      ScrollContainer: {
+        marginTop: 3,
+        marginBottom: 3,
+      },
+      PageViewsContainer: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+        flexDirection: 'row',
+        position: 'absolute',
+        width: width,
+        bottom: 6,
+      },
+      ActivePageView: {
+        backgroundColor: '#FFFFFF',
+        opacity: 1,
+        height: 10,
+        width: 10,
+        borderRadius: 5,
+        marginTop: 3,
+        marginLeft: 0,
+        marginBottom: 0,
+        marginRight: 3,
+      },
+      PageView: {
+        backgroundColor: '#FFFFFF',
+        opacity: 0.6,
+        height: 7,
+        width: 7,
+        borderRadius: 3.5,
+        marginTop: 3,
+        marginLeft: 0,
+        marginBottom: 0,
+        marginRight: 3,
+      },
+    });
   }
 
   onMomentumScrollEndDo = (event) => {
@@ -82,41 +129,3 @@ export class Carousel extends Component {
     return null;    
   }
 }
-
-const styles = StyleSheet.create({
-  scrollContainer: {
-    marginTop: 3,
-    marginBottom: 3,
-  },
-  pageViewsContainer: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    flexDirection: 'row',
-    position: 'absolute',
-    width: width,
-    bottom: 6,
-  },
-  activePageView: {
-    backgroundColor: '#FFFFFF',
-    opacity: 1,
-    height: 10,
-    width: 10,
-    borderRadius: 5,
-    marginTop: 3,
-    marginLeft: 0,
-    marginBottom: 0,
-    marginRight: 3,
-  },
-  pageView: {
-    backgroundColor: '#FFFFFF',
-    opacity: 0.6,
-    height: 10,
-    width: 10,
-    borderRadius: 5,
-    marginTop: 3,
-    marginLeft: 0,
-    marginBottom: 0,
-    marginRight: 3,
-  },
-});

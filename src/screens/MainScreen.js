@@ -15,14 +15,14 @@ export default class MainScreen extends Component {
 	};
 
 	featuresMeals(item, index) {
-		return <Image style={styles.featureMealImage} source={item.source} />
+		return <Image style={styles.FeatureMealImage} source={item.source} />
 	}
 
 	signatureMeals(item, index) {
 		return (
 			<View>
 				<Image style={styles.SignatureMealImage} source={item.source} />
-				<Text style={styles.SignatureMealTitle}>{item.title +' '+ index}</Text>
+				<Text style={styles.SignatureMealTitle}>{item.title +' '+ (index+1)}</Text>
 			</View>
 		)
 	}
@@ -134,7 +134,7 @@ const styles = StyleSheet.create({
 		alignContent: 'center',
 		justifyContent: 'space-around',
 	},
-	featureMealImage: {
+	FeatureMealImage: {
 		width: width,
 		height: featureMealCarouselImageHeight,
 	},
