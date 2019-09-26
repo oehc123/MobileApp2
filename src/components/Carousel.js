@@ -8,17 +8,16 @@ export class Carousel extends Component {
 
   constructor(props) {
     super(props);
-    const { array, widthView, renderView, showPageViews, pagingEnabled } = this.props;
     
-    this.renderView = renderView;
-    this.showPageViews = showPageViews != null ? showPageViews : true;
-    this.pagingEnabled = pagingEnabled != null ? pagingEnabled : true;
-    this.widthView = widthView;
+    this.renderView = props.renderView;
+    this.showPageViews = props.showPageViews == null ? true : props.showPageViews;
+    this.pagingEnabled = props.pagingEnabled == null ? true : props.pagingEnabled;
+    this.widthView = props.widthView;
 
     this.state = { 
       currentPage: 0,
-      countPages: Math.round((widthView / width) * array.length),
-      items: array
+      countPages: Math.round((props.widthView / width) * props.array.length),
+      items: props.array
     };
   }
 
