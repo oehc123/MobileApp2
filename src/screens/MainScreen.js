@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { View, ScrollView, StyleSheet, Dimensions } from 'react-native'
 import { Header, Button, Image, Text } from 'react-native-elements'
 
+import { makeFoodWizeScreen } from '../../utils.js';
+
 import { Carousel } from '../components/Carousel';
 
 const { width } = Dimensions.get('window');
@@ -9,10 +11,7 @@ const featureMealCarouselImageHeight = width * 0.5
 const signatureMealCarouselImageAspectRatio = width * 0.4
 
 
-export default class MainScreen extends Component {
-	static navigationOptions = {
-		header: null
-	};
+class MainScreen extends Component {
 
 	featuresMeals(item, index) {
 		return <Image style={styles.FeatureMealImage} source={item.source} />
@@ -82,6 +81,8 @@ export default class MainScreen extends Component {
 				source: require('../../assets/images/signature.sample.png'),
 			},
 		];
+		
+		const { t, i18n } = this.props
 		return (
 			<View style={styles.MainContainer}>
 				<Header
@@ -96,13 +97,15 @@ export default class MainScreen extends Component {
 							buttonStyle={styles.OpenFridgeBtn}
 							onPress={() => this.props.navigation.navigate('BarcodeScreen')}
 						/>
+						<Button title="EN" onPress={ () => { i18n.changeLanguage('en') } }/>
+						<Button title="ES" onPress={ () => { i18n.changeLanguage('es') } }/>
 						<Carousel
 							style={styles.Carousel}
 							array={featureMeals}
 							widthView={width}
 							renderView={this.featuresMeals}
 						/>
-						<Text style={styles.SignatureTitle}>Signature meals</Text>
+						<Text style={styles.SignatureTitle}>{ t("signature-meals-carousel-title") }</Text>
 						<Carousel
 							style={styles.Carousel}
 							array={signatureMeals}
@@ -120,7 +123,8 @@ export default class MainScreen extends Component {
 
 const styles = StyleSheet.create({
 	MainContainer: {
-		flex: 1
+		flex: 1,
+		paddingTop: 0,
 	},
 	OpenFridgeBtn: {
 		height: 100,
@@ -152,3 +156,5 @@ const styles = StyleSheet.create({
 		fontSize: 18,
 	}
 });
+
+export default makeFoodWizeScreen(MainScreen);

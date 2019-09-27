@@ -6,6 +6,8 @@ import BarcodeScreen from './src/screens/BarcodeScreen';
 import HeadsUpScreen from './src/screens/HeadsUpScreen';
 import PurchaseScreen from './src/screens/PurchaseScreen';
 
+import './i18n';
+
 const AppNavigator = createStackNavigator({
     MainScreen: MainScreen,
     BarcodeScreen: BarcodeScreen,
@@ -18,7 +20,7 @@ const AppNavigator = createStackNavigator({
                         
 const AppContainer = createAppContainer(AppNavigator);
 
-export default class App extends React.Component {
+class App extends React.Component {
   state = {
     isReady: false,
   };
@@ -41,6 +43,8 @@ export default class App extends React.Component {
     );
   }
 }
+
+export default App
 
 const styles = StyleSheet.create({
   container: {

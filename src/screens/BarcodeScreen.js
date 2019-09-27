@@ -14,8 +14,11 @@ import { AntDesign } from "@expo/vector-icons";
 import { BarCodeScanner } from "expo-barcode-scanner";
 import { TouchableHighlight } from "react-native-gesture-handler";
 
+import { makeFoodWizeScreen } from '../../utils.js';
+
 let {width, height} = Dimensions.get('window');
-export default class BarcodeScreen extends React.Component {
+
+class BarcodeScreen extends React.Component {
   static navigationOptions = {
     header: null
   };
@@ -35,6 +38,7 @@ export default class BarcodeScreen extends React.Component {
   };
 
   render() {
+    const { t } = this.props;
     const { hasCameraPermission, scanned } = this.state;
 
     if (hasCameraPermission === null) {
@@ -84,7 +88,7 @@ export default class BarcodeScreen extends React.Component {
                 }}
                 onPress={() => Linking.openURL("http://foodwize.co")}
               >
-                Need Help?
+                {t('need-help')}
               </Text>
             </View>
         </View>
@@ -132,3 +136,5 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   }
 });
+
+export default makeFoodWizeScreen(BarcodeScreen)
