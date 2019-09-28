@@ -100,14 +100,12 @@ class MainScreen extends Component {
 						<Button title="EN" onPress={ () => { i18n.changeLanguage('en') } }/>
 						<Button title="ES" onPress={ () => { i18n.changeLanguage('es') } }/>
 						<Carousel
-							style={styles.carousel}
 							array={featureMeals}
 							widthView={width}
 							renderView={this.featuresMeals}
 						/>
-						<Text style={styles.SignatureTitle}>{ t("signature-meals-carousel-title") }</Text>
+						<Text style={styles.signatureTitle}>{ t("signature-meals-carousel-title") }</Text>
 						<Carousel
-							style={styles.carousel}
 							array={signatureMeals}
 							widthView={signatureMealCarouselImageAspectRatio}
 							showPageViews={false}
