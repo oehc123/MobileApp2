@@ -14,14 +14,14 @@ const signatureMealCarouselImageAspectRatio = width * 0.4
 class MainScreen extends Component {
 
 	featuresMeals(item, index) {
-		return <Image style={styles.FeatureMealImage} source={item.source} />
+		return <Image style={styles.featureMealImage} source={item.source} />
 	}
 
 	signatureMeals(item, index) {
 		return (
 			<View>
-				<Image style={styles.SignatureMealImage} source={item.source} />
-				<Text style={styles.SignatureMealTitle}>{item.title +' '+ (index+1)}</Text>
+				<Image style={styles.signatureMealImage} source={item.source} />
+				<Text style={styles.signatureMealTitle}>{item.title +' '+ (index+1)}</Text>
 			</View>
 		)
 	}
@@ -84,30 +84,30 @@ class MainScreen extends Component {
 		
 		const { t, i18n } = this.props
 		return (
-			<View style={styles.MainContainer}>
+			<View style={styles.mainContainer}>
 				<Header
 					centerComponent={{ text: 'FOODWIZE', style: { color: '#fff' } }}
-					containerStyle={styles.HeaderStyle}
+					containerStyle={styles.headerStyle}
 				/>
                 <ScrollView>
 					<View>
 						<Button title="Open Fridge"
 							type='outline'
 							containerStyle={{ marginTop: 40, alignItems: 'center' }}
-							buttonStyle={styles.OpenFridgeBtn}
+							buttonStyle={styles.openFridgeBtn}
 							onPress={() => this.props.navigation.navigate('BarcodeScreen')}
 						/>
 						<Button title="EN" onPress={ () => { i18n.changeLanguage('en') } }/>
 						<Button title="ES" onPress={ () => { i18n.changeLanguage('es') } }/>
 						<Carousel
-							style={styles.Carousel}
+							style={styles.carousel}
 							array={featureMeals}
 							widthView={width}
 							renderView={this.featuresMeals}
 						/>
 						<Text style={styles.SignatureTitle}>{ t("signature-meals-carousel-title") }</Text>
 						<Carousel
-							style={styles.Carousel}
+							style={styles.carousel}
 							array={signatureMeals}
 							widthView={signatureMealCarouselImageAspectRatio}
 							showPageViews={false}
@@ -122,36 +122,36 @@ class MainScreen extends Component {
 }
 
 const styles = StyleSheet.create({
-	MainContainer: {
+	mainContainer: {
 		flex: 1,
 		paddingTop: 0,
 	},
-	OpenFridgeBtn: {
+	openFridgeBtn: {
 		height: 100,
 		width: 250,
 		borderColor: '#7dbf5c',
 		borderWidth: 8,
 		borderRadius: 5
 	},
-	HeaderStyle: {
+	headerStyle: {
 		backgroundColor: '#7dbf5c',
 		alignContent: 'center',
 		justifyContent: 'space-around',
 	},
-	FeatureMealImage: {
+	featureMealImage: {
 		width: width,
 		height: featureMealCarouselImageHeight,
 	},
-	SignatureTitle:{
+	signatureTitle: {
 		marginTop: 8,
 		marginLeft: 16,
 		fontSize: 24,
 	},
-	SignatureMealImage: {
+	signatureMealImage: {
 		width: signatureMealCarouselImageAspectRatio,
 		height: signatureMealCarouselImageAspectRatio,
 	},
-	SignatureMealTitle:{
+	signatureMealTitle: {
 		textAlign: 'center',
 		fontSize: 18,
 	}

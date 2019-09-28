@@ -8,25 +8,24 @@ export class Carousel extends Component {
 
   constructor(props) {
     super(props);
-    
-    this.renderView = props.renderView;
-    this.showPageViews = props.showPageViews == null ? true : props.showPageViews;
-    this.pagingEnabled = props.pagingEnabled == null ? true : props.pagingEnabled;
-    this.widthView = props.widthView;
-    
+    const { array, widthView, renderView, showPageViews, pagingEnabled } = this.props;
+
+    this.renderView = renderView;
+    this.showPageViews = showPageViews == null ? true : showPageViews;
+    this.pagingEnabled = pagingEnabled == null ? true : pagingEnabled;
+    this.widthView = widthView;
     this.state = { 
       currentPage: 0,
-      countPages: Math.round((props.widthView / width) * props.array.length),
-      items: props.array
+      countPages: Math.round((widthView / width) * array.length),
+      items: array
     };
-
     this.style = this.buildStyles()
   }
 
   componentView = () => {
     return (  
       <View
-        style={this.style.ScrollContainer}
+        style={this.style.scrollContainer}
       >
         <ScrollView
           ref={(ref) => this.scrollView = ref } 
@@ -46,7 +45,7 @@ export class Carousel extends Component {
   buildContentPage = (item, index) => {
     const { renderView } = this.props;
     content = renderView(item, index);
-    return <View key={index} style={this.style.PageContentView}>
+    return <View key={index} style={this.style.pageContentView}>
       { content }
     </View>;
   }
@@ -56,12 +55,12 @@ export class Carousel extends Component {
 
     for(let i = 0; i < this.state.countPages; i++){
       pageViews.push((
-        <View key={i} style={ this.state.currentPage == i ? this.style.ActivePageView : this.style.PageView }></View>
+        <View key={i} style={ this.state.currentPage == i ? this.style.activePageView : this.style.pageView }></View>
       ))
     }
     
     return (
-      <View style={this.style.PageViewsContainer}>
+      <View style={this.style.pageViewsContainer}>
           { pageViews }
       </View>
     );
@@ -69,16 +68,16 @@ export class Carousel extends Component {
 
   buildStyles(){
     return  StyleSheet.create({
-      PageContentView: {
+      pageContentView: {
         justifyContent: 'center',
         alignItems: 'center',
         width: this.widthView,
       },
-      ScrollContainer: {
+      scrollContainer: {
         marginTop: 3,
         marginBottom: 3,
       },
-      PageViewsContainer: {
+      pageViewsContainer: {
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
@@ -87,7 +86,7 @@ export class Carousel extends Component {
         width: width,
         bottom: 6,
       },
-      ActivePageView: {
+      activePageView: {
         backgroundColor: '#FFFFFF',
         opacity: 1,
         height: 10,
@@ -98,7 +97,7 @@ export class Carousel extends Component {
         marginBottom: 0,
         marginRight: 3,
       },
-      PageView: {
+      pageView: {
         backgroundColor: '#FFFFFF',
         opacity: 0.6,
         height: 7,
