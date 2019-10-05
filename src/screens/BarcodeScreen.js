@@ -8,6 +8,7 @@ import {
   Dimensions,
   Image
 } from "react-native";
+import LottieView from "lottie-react-native";
 import * as Permissions from "expo-permissions";
 import { AntDesign } from "@expo/vector-icons";
 
@@ -54,43 +55,54 @@ class BarcodeScreen extends React.Component {
             style={StyleSheet.absoluteFillObject}
         />
         <View style={styles.camaraHoleStyle}>
-        <TouchableHighlight //TODO this should be deleted. its added only for testing purposes
+          <View style={styles.animationContainer}>
+            <LottieView
+              ref={animation => {
+                this.animation = animation;
+                animation.play()
+              }}
+              style={{
+                width: 150,
+                height: 150,
+                backgroundColor: '#eee',
+              }}
+              source={require('./../../assets/animations/scan-camera.json')}
+            />
+          </View>
+        </View>
+        <View style={{ position: "absolute", left: 10, top: 20 }}>
+          <AntDesign
+            name="leftcircle"
+            size={40}
+            color='black'
+            onPress={() => {
+              this.props.navigation.goBack();
+            }}
+          />
+        </View>
+        <View style={styles.instructionTextStyle}>
+          <View style={{ backgroundColor: "grey", opacity: 0.7 }}>
+            <Text style={{ fontSize: 20 }}>
+              Scan fridge's barcode to Open
+            </Text>
+            <Text
+              style={{
+                textAlign: "center",
+                color: "blue",
+                fontWeight: "bold"
+              }}
+              onPress={() => Linking.openURL("http://foodwize.co")}
+            >
+              {t('need-help')}
+            </Text>
+            <TouchableHighlight //TODO this should be deleted. its added only for testing purposes
               onPress={() => {
                 this.props.navigation.navigate("HeadsUpScreen");
               }}
-          >
-          <Image
-                source={require("../../assets/images/qrReference.png")}
-                style={{ opacity: 0.5,  }}
-              />
-        </TouchableHighlight>
-        </View>
-        <View style={{ position: "absolute", left: 10, top: 20 }}>
-            <AntDesign
-              name="leftcircle"
-              size={40}
-              color='black'
-              onPress={() => {
-                this.props.navigation.goBack();
-              }}
-            />
-        </View>
-        <View style={styles.instructionTextStyle}>
-            <View style={{ backgroundColor: "grey", opacity: 0.7 }}>
-              <Text style={{ fontSize: 20 }}>
-                Scan fridge's barcode to Open
-              </Text>
-              <Text
-                style={{
-                  textAlign: "center",
-                  color: "blue",
-                  fontWeight: "bold"
-                }}
-                onPress={() => Linking.openURL("http://foodwize.co")}
-              >
-                {t('need-help')}
-              </Text>
-            </View>
+            >
+              <Text> press here to Simulate forward DEV MDOE </Text>
+            </TouchableHighlight>
+          </View>
         </View>
       </Fragment>
     );
