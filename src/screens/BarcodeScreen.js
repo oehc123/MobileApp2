@@ -55,7 +55,6 @@ class BarcodeScreen extends React.Component {
             style={StyleSheet.absoluteFillObject}
         />
         <View style={styles.camaraHoleStyle}>
-          <View style={styles.animationContainer}>
             <LottieView
               ref={animation => {
                 this.animation = animation;
@@ -63,12 +62,11 @@ class BarcodeScreen extends React.Component {
               }}
               style={{
                 width: 150,
-                height: 150,
-                backgroundColor: '#eee',
+                height: 210,
+                backgroundColor: 'transparent',
               }}
               source={require('./../../assets/animations/scan-camera.json')}
             />
-          </View>
         </View>
         <View style={{ position: "absolute", left: 10, top: 20 }}>
           <AntDesign
@@ -139,7 +137,7 @@ const styles = StyleSheet.create({
     height: height,
     width: width,
     borderRightWidth: width/9,
-    borderTopWidth: height/8,
+    borderTopWidth: height/8 + 30,
     borderBottomWidth: height/2,
     borderLeftWidth: width/9,
     borderColor:'rgba(0,0,0,0.6)',
