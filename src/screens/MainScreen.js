@@ -97,8 +97,6 @@ class MainScreen extends Component {
 							buttonStyle={styles.openFridgeBtn}
 							onPress={() => this.props.navigation.navigate('BarcodeScreen')}
 						/>
-						<Button title="EN" onPress={ () => { i18n.changeLanguage('en') } }/>
-						<Button title="ES" onPress={ () => { i18n.changeLanguage('es') } }/>
 						<Carousel
 							array={featureMeals}
 							widthView={width}
