@@ -1,18 +1,14 @@
 import React, { Component } from 'react'
 import { View, ScrollView, StyleSheet, Dimensions } from 'react-native'
-import { Header, Button, Image, Text } from 'react-native-elements'
-
-import { makeFoodWizeScreen } from '../../utils.js';
-
+import { Button, Image, Text } from 'react-native-elements'
+import { makeFoodWizeMainScreen } from '../../utils.js';
 import { Carousel } from '../components/Carousel';
 
 const { width } = Dimensions.get('window');
 const featureMealCarouselImageHeight = width * 0.5
 const signatureMealCarouselImageAspectRatio = width * 0.4
 
-
 class MainScreen extends Component {
-
 	featuresMeals(item, index) {
 		return <Image style={styles.featureMealImage} source={item.source} />
 	}
@@ -85,11 +81,7 @@ class MainScreen extends Component {
 		const { t, i18n } = this.props
 		return (
 			<View style={styles.mainContainer}>
-				<Header
-					centerComponent={{ text: 'FOODWIZE', style: { color: '#fff' } }}
-					containerStyle={styles.headerStyle}
-				/>
-                <ScrollView>
+				<ScrollView>
 					<View>
 						<Button title="Open Fridge"
 							type='outline'
@@ -153,4 +145,4 @@ const styles = StyleSheet.create({
 	}
 });
 
-export default makeFoodWizeScreen(MainScreen);
+export default makeFoodWizeMainScreen(MainScreen);

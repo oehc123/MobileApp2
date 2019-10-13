@@ -16,7 +16,14 @@ const AppNavigator = createStackNavigator({
   },
   {
     initialRouteName: 'MainScreen',
-});
+    defaultNavigationOptions: {
+      headerStyle: {
+        height: 80,
+        borderBottomWidth: 0,
+      }
+    }
+  }
+);
                         
 const AppContainer = createAppContainer(AppNavigator);
 
