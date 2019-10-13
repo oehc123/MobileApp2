@@ -5,8 +5,7 @@ import {
   View,
   StyleSheet,
   Linking,
-  Dimensions,
-  Image
+  Dimensions
 } from "react-native";
 import LottieView from "lottie-react-native";
 import * as Permissions from "expo-permissions";
@@ -79,14 +78,13 @@ class BarcodeScreen extends React.Component {
           />
         </View>
         <View style={styles.instructionTextStyle}>
-          <View style={{ backgroundColor: "grey", opacity: 0.7 }}>
-            <Text style={{ fontSize: 20 }}>
+            <Text style={{ fontSize: 20, color: 'white' }}>
               Scan fridge's barcode to Open
             </Text>
             <Text
               style={{
                 textAlign: "center",
-                color: "blue",
+                color: "white",
                 fontWeight: "bold"
               }}
               onPress={() => Linking.openURL("http://foodwize.co")}
@@ -100,7 +98,6 @@ class BarcodeScreen extends React.Component {
             >
               <Text> press here to Simulate forward DEV MDOE </Text>
             </TouchableHighlight>
-          </View>
         </View>
       </Fragment>
     );
