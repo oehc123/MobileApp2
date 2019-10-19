@@ -5,14 +5,14 @@ import {
   View,
   StyleSheet,
   Linking,
-  Dimensions
+  Dimensions,
+  TouchableOpacity
 } from "react-native";
 import LottieView from "lottie-react-native";
 import * as Permissions from "expo-permissions";
 import { AntDesign } from "@expo/vector-icons";
 
 import { BarCodeScanner } from "expo-barcode-scanner";
-import { TouchableHighlight } from "react-native-gesture-handler";
 
 import { makeFoodWizeScreen } from '../../utils.js';
 
@@ -65,16 +65,18 @@ class BarcodeScreen extends React.Component {
               source={require('./../../assets/animations/scan-camera.json')}
             />
         </View>
-        <View style={{ position: "absolute", left: 10, top: 20 }}>
-          <AntDesign
-            name="leftcircle"
-            size={40}
-            color='black'
+          <TouchableOpacity 
+            style={{ position: "absolute", zIndex: 1, left: 15, top: 30 }}
             onPress={() => {
               this.props.navigation.goBack();
             }}
-          />
-        </View>
+          >
+            <AntDesign
+              name="leftcircle"
+              size={40}
+              color='black'
+            />
+          </TouchableOpacity>
         <View style={styles.instructionTextStyle}>
             <Text style={{ fontSize: 20, color: 'white' }}>
               Scan fridge's barcode to Open
@@ -89,13 +91,13 @@ class BarcodeScreen extends React.Component {
             >
               {t('need-help')}
             </Text>
-            <TouchableHighlight //TODO this should be deleted. its added only for testing purposes
+            <TouchableOpacity //TODO this should be deleted. its added only for testing purposes
               onPress={() => {
                 this.props.navigation.navigate("HeadsUpScreen");
               }}
             >
               <Text> press here to Simulate forward DEV MDOE </Text>
-            </TouchableHighlight>
+            </TouchableOpacity>
         </View>
       </Fragment>
     );
