@@ -55,10 +55,8 @@ class BarcodeScreen extends React.Component {
         />
         <View style={styles.camaraHoleStyle}>
             <LottieView
-              ref={animation => {
-                this.animation = animation;
-                animation.play()
-              }}
+              loop
+              autoPlay
               style={{
                 width: 150,
                 height: 210,
