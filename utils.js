@@ -16,7 +16,7 @@ export const makeFoodWizeMainScreen = (component) => {
 		headerTitle:
 			<Image
 				source={require('./assets/images/HeaderLogo.jpg')}
-				style={{ width: '95%', height: '95%'}}
+				style={{ width: '95%', height: '95%' }}
 			/>
 	};
 	return componentWithTranslation;
