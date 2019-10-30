@@ -20,6 +20,8 @@ const AppNavigator = createStackNavigator({
       headerStyle: {
         height: 80,
         borderBottomWidth: 0,
+        paddingTop: 20,
+        marginHorizontal: 10
       }
     }
   }
