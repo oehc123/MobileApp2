@@ -40,7 +40,7 @@ class App extends React.Component {
     if (!this.state.isReady) {
       return (
         <View style={styles.container}>
-            <Text style={styles.banner}>Foodwize App</Text>
+            <Text style={styles.banner}>Foodwize App develop</Text>
         </View>
       );
     }
