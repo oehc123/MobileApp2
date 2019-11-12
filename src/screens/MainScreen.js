@@ -85,27 +85,23 @@ class MainScreen extends Component {
 					<View>
 						<Button title="Open Fridge Travis"
 							type='outline'
-							containerStyle={{ paddingTop: 25, paddingHorizontal: 10, alignItems: 'center' }}
+							containerStyle={{ marginTop: 40, alignItems: 'center' }}
 							buttonStyle={styles.openFridgeBtn}
 							onPress={() => this.props.navigation.navigate('BarcodeScreen')}
 						/>
-						<View style={{ paddingTop: 20, paddingHorizontal: 10 }}>
-							<Carousel
-								array={featureMeals}
-								widthView={width}
-								renderView={this.featuresMeals}
-							/>
-						</View>
+						<Carousel
+							array={featureMeals}
+							widthView={width}
+							renderView={this.featuresMeals}
+						/>
 						<Text style={styles.signatureTitle}>{ t("signature-meals-carousel-title") }</Text>
-						<View style={{ paddingHorizontal: 10 }}>
-							<Carousel
-								array={signatureMeals}
-								widthView={signatureMealCarouselImageAspectRatio}
-								showPageViews={false}
-								pagingEnabled={false}
-								renderView={this.signatureMeals}
-							/>
-						</View>
+						<Carousel
+							array={signatureMeals}
+							widthView={signatureMealCarouselImageAspectRatio}
+							showPageViews={false}
+							pagingEnabled={false}
+							renderView={this.signatureMeals}
+						/>
 					</View>
 				</ScrollView>
 			</View>
@@ -135,7 +131,7 @@ const styles = StyleSheet.create({
 		height: featureMealCarouselImageHeight,
 	},
 	signatureTitle: {
-		paddingTop: 20,
+		marginTop: 8,
 		marginLeft: 16,
 		fontSize: 24,
 	},
