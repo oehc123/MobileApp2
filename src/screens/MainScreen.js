@@ -83,7 +83,7 @@ class MainScreen extends Component {
 			<View style={styles.mainContainer}>
 				<ScrollView>
 					<View>
-						<Button title="Open Fridge Travis"
+						<Button title="Open Fridge"
 							type='outline'
 							containerStyle={{ marginTop: 40, alignItems: 'center' }}
 							buttonStyle={styles.openFridgeBtn}

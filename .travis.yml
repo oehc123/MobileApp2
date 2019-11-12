@@ -22,7 +22,7 @@ jobs:
       script:
         - npm ci
         - npx expo login -u $EXPO_USERNAME -p $EXPO_PASSWORD
-        - npx expo publish --non-interactive
+        - npx expo publish --release-channel production
 # safelist
 branches:
   only:
